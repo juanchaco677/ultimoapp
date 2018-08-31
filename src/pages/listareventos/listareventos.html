@@ -1,10 +1,18 @@
 <ion-header>
-  
-  <ion-searchbar placeholder="Evento" (ionInput)="buscarEventos($event)"  name="buscar" id="listareventos-search1"></ion-searchbar>
-
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button solid>
+        Eventos
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+<ion-searchbar placeholder="Evento" (ionInput)="buscarEventos($event)"  name="buscar" id="listareventos-search1"></ion-searchbar>
 </ion-header>
 <ion-content padding id="page3">
-    
+
   <ion-refresher (ionRefresh)="doRefresh($event)">
       <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
