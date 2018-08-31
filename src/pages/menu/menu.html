@@ -1,0 +1,35 @@
+<ion-menu [content]="mainContent">
+  <ion-content id="side-menu21">
+    <ion-list id="menu-list1">
+      {{visible}}
+      <ion-item color="none" menuClose="" on-click="goToUsuarioCrear()" id="menu-list-item4" *ngIf="visible">
+       Registrar Usuario
+      <ion-icon name="people" item-right></ion-icon>
+    </ion-item>
+      <ion-item color="positive" menuClose="" on-click="goToListareventos()" id="menu-list-item9" *ngIf="visible">
+        <ion-icon name="list-box" item-left></ion-icon>
+        Eventos
+        <ion-icon name="people" item-right></ion-icon>
+      </ion-item>
+    
+      <ion-item color="none" menuClose="" on-click="goToUsuarioPerfil()" id="menu-list-item16">
+        Perfil
+        <ion-icon name="contact" item-right></ion-icon>
+      </ion-item>
+      <ion-item color="none" menuClose="" on-click="loginFacebook()" id="menu-list-item11">      
+        Facebook
+        <ion-icon name="facebook" item-right></ion-icon>
+      </ion-item>
+      <ion-item color="none" menuClose="" on-click="loginTwitter()" id="menu-list-item11">      
+        Twitter
+      <ion-icon name="facebook" item-right></ion-icon>
+      </ion-item>
+      <ion-item color="positive" menuClose="" on-click="goToExit()" id="menu-list-item8">
+        <ion-note item-right></ion-note>
+        <ion-icon name="exit" item-right></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mainContent [root]="rootPage"></ion-nav>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      loginvisitante
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button solid>
+        Visitante
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page6">
+  <div class="spacer" style="width:300px;height:179px;" id="loginvisitante-spacer2"></div>
+  <form id="loginvisitante-form5" class="form-horizontal" (ngSubmit)="sesion(sesionVisitante)" #sesionVisitante="ngForm" novalidate>
+    <ion-list id="loginvisitante-list6">
+      <ion-item id="loginvisitante-input6">
+        <ion-label floating>
+          Cédula
+        </ion-label>
+        <ion-input type="number" [(ngModel)]="usuario.nit"  minlength="7" name="nit"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="spacer" style="width:300px;height:29px;" id="loginvisitante-spacer1"></div>
+    <button id="sesion-button1" [disabled]="sesionVisitante.invalid"  type="submit" ion-button color="positive" block>
+      Iniciar Sesión
+    </button>
+    
+  </form>
+</ion-content>

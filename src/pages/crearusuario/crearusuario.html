@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+  
+    <ion-title>
+      crearusuario
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-left>
+        <ion-icon name="person-add"></ion-icon>
+        Crear Usuario
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page2">
+  <form id="crearusuario-form1" class="form-horizontal" (ngSubmit)="crear(formUsuario)" #formUsuario="ngForm" novalidate>
+  
+
+    <ion-list id="crearusuario-list2">
+        <ion-item id="crearusuario-input1">
+            <ion-label floating>
+              No. Cédula
+            </ion-label>
+            <ion-input type="number" [(ngModel)]="usuario.nit" required name="nit" minlength="7"></ion-input>
+          </ion-item>
+      <ion-item id="crearusuario-input1"> 
+        <ion-label floating>
+          Nombre Completo
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.name"  name="name"></ion-input>
+      </ion-item>
+      <ion-item id="crearusuario-input2">
+        <ion-label floating>
+          Celular
+        </ion-label>
+        <ion-input type="number" [(ngModel)]="usuario.telefonomovil"  name="movil"></ion-input>
+      </ion-item>
+      <ion-item id="crearusuario-input3">
+        <ion-label floating>
+          Correo
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"   name="email" ></ion-input>
+    
+      </ion-item>
+    </ion-list>
+    <ion-searchbar placeholder="Buscar Referido" name="buscar" (ionInput)="buscarReferido($event)"  (change)="buscarReferido($event)" autocorrect="off"></ion-searchbar>
+   
+    <ion-item id="crearusuario-select1">
+      <ion-label>
+        Seleccionar Referido
+      </ion-label>
+      <ion-select [(ngModel)]="usuario.id_referido" name="id_referido">
+          <ion-option *ngFor="let referido of listaUsuario" value="{{referido.id}}">
+              {{referido.name}}&nbsp;{{referido.name2}}&nbsp;{{referido.lastname}}&nbsp;{{referido.lastname2}}
+            </ion-option>
+     </ion-select>
+    </ion-item>
+    <button id="sesion-button1" [disabled]="formUsuario.invalid"  type="submit" ion-button color="positive" block>
+        Crear
+      </button>
+  </form>
+</ion-content>

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Evento
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page11">
+  <form id="caevento-form7"  class="form-horizontal" (ngSubmit)="crear(formEvento)" #formEvento="ngForm" novalidate>
+    <ion-item id="caevento-input13">
+      <ion-label floating>
+        Título
+      </ion-label>
+      <ion-input type="text" required [(ngModel)]="evento.titulo" name="titulo"></ion-input>
+    </ion-item>
+    <ion-item id="caevento-textarea1">
+      <ion-label>
+        Descripción
+      </ion-label>
+      <ion-textarea  required [(ngModel)]="evento.descripcion" name="descripcion" ></ion-textarea>
+    </ion-item>
+    <div class="row">
+        <div class="col-md-12 align-self-center" *ngFor="let imagen of imagenes; let i = index" >
+          <img class="img-fluid d-block"[src]="imagen">
+ 
+          <ion-label color="primary" stacked>Descripción u Observaciones</ion-label>
+          <ion-input type="text" ></ion-input>
+          <button ion-button color="danger" (click)="eliminarImagen(i);">Eliminar</button>
+        </div>
+    </div>
+    <div class="spacer" style="width:10px;height:267px;" id="caevento-spacer4"></div>
+ 
+  <button id="sesion-button1" [disabled]="formEvento.invalid"  type="submit" ion-button color="positive" block>
+      Guardar
+  </button>
+
+
+</form>
+<ion-fab bottom bottom (click)="tomarFoto()">
+  <button ion-fab mini><ion-icon name="camera"></ion-icon></button>      
+</ion-fab>
+</ion-content>

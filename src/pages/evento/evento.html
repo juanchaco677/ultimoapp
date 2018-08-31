@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{evento.titulo}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page4">
+  <ion-card id="evento-card21">
+    <ion-list>
+      <ion-item id="evento-list-item-container2">
+        <div id="evento-markdown2" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#000000;font-size:9px;">
+            <strong >
+              {{evento.created_at}}
+            </strong>
+          </p>
+        </div>
+      </ion-item>
+      <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;" *ngFor="let imagen of listaImage" >
+          <ion-img style="width:100%;height:220px" src="http://localhost:8000/archivos/descarga.jpeg"></ion-img>
+      </div>
+      <ion-item id="evento-list-item-container3">
+        <div id="evento-markdown3" style="text-align:justify;" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#3A7EF5;">
+            {{evento.descripcion}}
+          </p>
+        </div>
+      </ion-item>
+      <ion-item color="none" id="evento-list-item14">
+        Item
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+    <div id="evento-container3" *ngFor="let comentario of listaPublicacion" >
+        <ion-list id="evento-list5">
+            <ion-item id="evento-list-item-container4">
+              <div id="evento-markdown4" style="text-align:right;" class="show-list-numbers-and-dots">
+                <p style="margin-top:0px;color:#3A7EF5;">
+                  <strong >
+                      {{comentario.getNombreCompleto()}}&nbsp{{comentario.created_at}}
+                  </strong>
+                </p>
+              </div>
+              <div id="evento-markdown6" style="text-align:center;" class="show-list-numbers-and-dots">
+                <p style="margin-top:0px;color:#050505;">
+                  {{comentario.descripcion}}
+                </p>
+              </div>
+            </ion-item>
+        </ion-list>
+    </div>
+    <form id="evento-form4" class="form-horizontal" (ngSubmit)="crear(formComentario)" #formComentario="ngForm" novalidate>
+    <ion-item id="evento-input5">
+      <ion-label floating>
+        Comentar
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="comentar"  name="comentario" required></ion-input>
+    </ion-item>
+  
+    <button id="sesion-button1" [disabled]="formComentario.invalid"  type="submit" ion-button color="positive" block>
+        Guardar
+    </button>
+  </form>
+</ion-content>

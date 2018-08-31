@@ -1,0 +1,39 @@
+<ion-header>
+  
+  <ion-searchbar placeholder="Evento" (ionInput)="buscarEventos($event)"  name="buscar" id="listareventos-search1"></ion-searchbar>
+
+</ion-header>
+<ion-content padding id="page3">
+    
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+  <div id="listareventos-container1">
+    <ion-list id="listareventos-list3">
+      <ion-item-sliding *ngFor="let evento of listaEvento" >
+        <ion-item color="positive" id="listareventos-list-item2">
+          <ion-thumbnail item-left>
+            <!-- {{buscarImagenPrimera(evento.id).foto}} -->
+            <img />
+          </ion-thumbnail>
+          <h2>
+            {{evento.titulo}}
+          </h2>
+        </ion-item>
+        <ion-item-options side="left">
+          <button ion-button color="positive" (click)="ver(evento)">
+            Ver
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+  <ion-fab bottom bottom >
+    <button ion-fab mini><ion-icon name="settings"></ion-icon></button>
+    <ion-fab-list side="top">        
+      <button ion-fab on-click="irCAenvento()"><ion-icon name="add-circle"></ion-icon></button>    
+      <button ion-fab><ion-icon name="image"></ion-icon></button>  
+    </ion-fab-list>    
+  </ion-fab>
+</ion-content>

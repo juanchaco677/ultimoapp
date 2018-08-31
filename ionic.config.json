@@ -1,0 +1,7 @@
+{
+  "name": "conjunto-residencial-web",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
