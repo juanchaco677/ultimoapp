@@ -16,19 +16,19 @@
       <ion-label floating>
         Nombre Completo
       </ion-label>
-      <ion-input type="text" [(ngModel)]="usuarioAuth.name" value="{{usuarioAuth.getNombreCompleto()}}" name="name"></ion-input>
+      <ion-input type="text" [(ngModel)]="usuarioAuth.getNombreCompleto()"  name="name"></ion-input>
     </ion-item>
     <ion-item id="perfil-input9">
       <ion-label floating>
         Celular
       </ion-label>
-      <ion-input type="tel" [(ngModel)]="usuarioAuth.telefonomovil" value="{{usuarioAuth.telefonomovil}}"  name="telefonomovil"></ion-input>
+      <ion-input type="tel" [(ngModel)]="usuarioAuth.telefonomovil"  name="telefonomovil"></ion-input>
     </ion-item>
     <ion-item id="perfil-input10">
       <ion-label floating>
         Input
       </ion-label>
-      <ion-input type="email" [(ngModel)]="usuarioAuth.email" value="{{usuarioAuth.email}}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email"></ion-input>
+      <ion-input type="email" [(ngModel)]="usuarioAuth.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email"></ion-input>
     </ion-item>
     <ion-item id="perfil-select2">
       <ion-label>
