@@ -20,5 +20,11 @@ export class Usuario {
 
   }
 
+  concatenar(cadena:string){
+    return (cadena=="null" || cadena=="" || cadena==undefined)?"":cadena;
+  } 
 
+  getNombreCompleto(){  
+     return this.name+" "+this.concatenar(this.name2)+" "+this.concatenar(this.lastname)+" "+this.concatenar(this.lastname2);
+  }
 }
