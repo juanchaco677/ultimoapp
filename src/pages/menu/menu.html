@@ -1,13 +1,16 @@
 <ion-menu [content]="mainContent">
   <ion-content id="side-menu21">
     <ion-list id="menu-list1">
-      {{visible}}
+      <ion-item color="none" menuClose="" on-click="goToUsuarioCrear()" id="menu-list-item4" *ngIf="visible">
+       <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">
+          <ion-img style="width:100%;height:220px" src="http://www.bogotacomovamos.org/app/uploads/2016/09/Concejal22-885x1024.jpg"></ion-img>
+      </div>        
+      </ion-item>
       <ion-item color="none" menuClose="" on-click="goToUsuarioCrear()" id="menu-list-item4" *ngIf="visible">
        Registrar Usuario
       <ion-icon name="people" item-right></ion-icon>
     </ion-item>
       <ion-item color="positive" menuClose="" on-click="goToListareventos()" id="menu-list-item9" *ngIf="visible">
-        <ion-icon name="list-box" item-left></ion-icon>
         Eventos
         <ion-icon name="people" item-right></ion-icon>
       </ion-item>
