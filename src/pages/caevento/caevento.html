@@ -24,14 +24,12 @@
     </ion-item>
     <div class="row">
         <div class="col-md-12 align-self-center" *ngFor="let imagen of imagenes; let i = index" >
-          <img class="img-fluid d-block"[src]="imagen">
- 
-          <ion-label color="primary" stacked>Descripción u Observaciones</ion-label>
-          <ion-input type="text" ></ion-input>
+          <img class="img-fluid d-block"[src]="imagen"> 
           <button ion-button color="danger" (click)="eliminarImagen(i);">Eliminar</button>
+          <div class="spacer" style="width:100px;height:2px;" id="caevento-spacer4"></div>
         </div>
     </div>
-    <div class="spacer" style="width:10px;height:267px;" id="caevento-spacer4"></div>
+    <div class="spacer" style="width:100px;height:2px;" id="caevento-spacer4"></div>
  
   <button id="sesion-button1" [disabled]="formEvento.invalid"  type="submit" ion-button color="positive" block>
       Guardar
