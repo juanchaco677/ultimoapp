@@ -6,13 +6,13 @@ import {MenuPage} from '../menu/menu';
 import {LoadingController} from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import {LoginvisitantePage} from '../loginvisitante/loginvisitante';
-
+import { ValerianConstante } from '../../util/valerianconstante';
 @Component({
   selector: 'page-sesion',
   templateUrl: 'sesion.html'
 })
 export class SesionPage implements OnInit {
-  usuario=new Usuario("","","","","","","","","","","","","",null,null);
+  usuario=new Usuario("","","","","","","","","","","","","","",null,null);
   errores:Array<string>;
   constructor(private alertCtrl: AlertController,private loadingCtrl:LoadingController,public redireccionar: NavController,private usuarioProvider:UsuarioProvider) {
 
@@ -55,7 +55,6 @@ export class SesionPage implements OnInit {
   }
   
 
-
   getUsuario(token:string):void{
 
     this.usuarioProvider.getUsuario(token).subscribe(
@@ -64,6 +63,7 @@ export class SesionPage implements OnInit {
            console.log(data["data"]);
               this.usuario=<Usuario>data["data"];                
               this.usuario.token=token;
+              this.usuario.nombreCompleto=ValerianConstante.getNombreCompleto(this.usuario);
               localStorage.setItem('usuario',JSON.stringify({ usuario:this.usuario}));
               this.redireccionar.push(MenuPage,{visible:true});    
            },

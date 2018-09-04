@@ -6,7 +6,7 @@ import { Usuario} from '../../modelo/usuario';
 
 import { Publicacion} from '../../modelo/publicacion';
 import { PublicacionProvider } from '../../providers/publicacion/publicacion';
-
+import { ValerianConstante } from '../../util/valerianconstante';
 @Component({
   selector: 'page-evento',
   templateUrl: 'evento.html'
@@ -15,19 +15,21 @@ export class EventoPage {
   comentar:String;
   usuarioAuth:Usuario;
   listaPublicacion:Array<Publicacion> = [];
+  publicacion:Publicacion;
   listaImage:Array<Imagen> = [];
   evento:Evento;
-
+  url:string;
   constructor(public navCtrl: NavController,public parametros: NavParams,private publicacionProvider:PublicacionProvider) {
     this.evento=<Evento>this.parametros.get("evento");
+    this.url=ValerianConstante.URL;
     this.usuarioAuth=<Usuario>JSON.parse(localStorage.getItem('usuario')).usuario;
     if(this.evento!=null && this.evento!=undefined){
       this.publicacionProvider.getPublicaciones(this.evento.id,this.usuarioAuth.token).subscribe(
         data=>{               
             let listaAuxPublicacion=<Publicacion[]>data["data"];
             for (const key in listaAuxPublicacion) {
-                let publicacion=<Publicacion>listaAuxPublicacion[key];
-                this.addEvento(publicacion);              
+                this.publicacion=<Publicacion>listaAuxPublicacion[key];          
+                this.addEvento(this.publicacion);              
             }
             this.listaImage=<Imagen[]>data["imagenes"]; 
           },
@@ -44,11 +46,26 @@ export class EventoPage {
       for (const key in this.listaPublicacion) {
           let publicacionAnalizado=<Publicacion>this.listaPublicacion[key];
           if(publicacionAnalizado.id!=publicacion.id){
-            this.listaPublicacion.push(publicacion);
+            this.publicacion=new Publicacion(
+              publicacion.id,
+              publicacion.id_evento,
+              publicacion.id_comenta,
+              publicacion.descripcion,
+              publicacion.name,
+              publicacion.name2,
+              publicacion.lastname,
+              publicacion.lastname2,
+              publicacion.created_at,
+              publicacion.updated_at);
+
+            this.publicacion.nombreCompleto=ValerianConstante.getNombreCompletoPublicacion(publicacion);
+            this.listaPublicacion.push(this.publicacion);
+
             break;
           }                
       }
     }else{
+ 
       this.listaPublicacion.push(publicacion);
     }
     
@@ -59,8 +76,21 @@ export class EventoPage {
     formulario.value.id_comenta=this.usuarioAuth.id;
       this.publicacionProvider.crear(formulario.value,this.usuarioAuth.token).subscribe(
         data=>{               
-          this.listaPublicacion.push(<Publicacion>data["data"]);
-
+  
+          let publicacion:Publicacion=<Publicacion>data["data"];  
+          this.publicacion=new Publicacion(
+            publicacion.id,
+            publicacion.id_evento,
+            publicacion.id_comenta,
+            publicacion.descripcion,
+            publicacion.name,
+            publicacion.name2,
+            publicacion.lastname,
+            publicacion.lastname2,
+            publicacion.created_at,
+            publicacion.updated_at);
+          this.publicacion.nombreCompleto=ValerianConstante.getNombreCompletoPublicacion(publicacion);      
+          this.listaPublicacion.push(this.publicacion);
           },
         err=>{        
           console.log("ERROR");

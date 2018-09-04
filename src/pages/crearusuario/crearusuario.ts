@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Rx';
   templateUrl: 'crearusuario.html'
 })
 export class CrearusuarioPage {
-  usuario=new Usuario("","","","","","","","","","","","","",null,null);
+  usuario=new Usuario("","","","","","","","","","","","","","",null,null);
   usuarioAuth:Usuario;
   listaUsuario:Observable<Usuario[]>;
   constructor(private alertCtrl: AlertController,private loadingCtrl:LoadingController,public navCtrl: NavController,private usuarioProvider:UsuarioProvider) {
@@ -55,7 +55,7 @@ export class CrearusuarioPage {
     this.usuarioProvider.crearAndroid(formulario.value,this.usuarioAuth.token).subscribe(
       data=>{ 
                      
-          this.usuario=new Usuario("","","","","","","","","","","","","",null,null);   
+          this.usuario=new Usuario("","","","","","","","","","","","","","",null,null);   
        
           loading.dismiss();       
           let alert = this.alertCtrl.create({

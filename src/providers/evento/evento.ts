@@ -3,7 +3,7 @@ import { Http,Response,RequestOptions,Headers } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Rx';
 import { ValerianConstante } from '../../util/valerianconstante';
-import { Evento} from '../../modelo/evento';
+
 /*
   Generated class for the EventoProvider provider.
 
@@ -22,20 +22,17 @@ export class EventoProvider {
 
   }
 
-  public getEventos(buscar:String,token:String,inicial:number):Observable <Evento[]>{
-    console.log("BUSCAR dd="+buscar);
+  public getEventos(buscar:String,token:String,inicial:number):Observable <any[]>{
     let headers = new Headers();
-    headers.append('Authorization', 'Bearer ' + token);
+    headers.append('Authorization', 'Bearer ' + token); 
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
     let parameter="buscar="+buscar;
-        parameter+="&";
-        parameter+="inicial="+inicial;
-
-    let options = new RequestOptions({ headers: headers});
-    return this.http.get(this.ruta+"getEventos/?"+parameter,options)
-    .map((res : Response) => res.json())
-
+    parameter+="&";
+    parameter+="inicial="+inicial;
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(this.ruta+"getEventos/?"+parameter,options) 
+    .map((res : Response) => res.json());
   }
 
        /**
@@ -54,6 +51,6 @@ export class EventoProvider {
     .map((res : Response) => res.json())
 
   }
-  413317339195259
+  
 
 }

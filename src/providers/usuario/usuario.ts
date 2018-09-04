@@ -63,6 +63,24 @@ export class UsuarioProvider {
     .map((res : Response) => res.json())
 
   }
+    /**
+   * metood para crear un usuario
+   * la data es json o informaicon ingresada en el formulario
+   * @param data 
+   */
+  public actualizarAndroid(data:any,token:string):Observable<any>{
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + token); 
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    let options = new RequestOptions({ headers: headers});
+
+    return this.http.post(this.ruta+"updateAndroid",data,options)
+    .map((res : Response) => res.json())
+
+  }
+
+  
 
   /**
    * metood para crear un usuario

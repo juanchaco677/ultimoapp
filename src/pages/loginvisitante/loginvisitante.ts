@@ -8,7 +8,7 @@ import { Usuario} from '../../modelo/usuario';
   templateUrl: 'loginvisitante.html'
 })
 export class LoginvisitantePage {
-  usuario=new Usuario("","","","","","","","","","","","","",null,null);
+  usuario=new Usuario("","","","","","","","","","","","","","",null,null);
   constructor(public parametros:NavParams,private usuarioProvider:UsuarioProvider,private alertCtrl: AlertController,private loadingCtrl:LoadingController,public navCtrl: NavController) {
    
   }
@@ -32,7 +32,7 @@ export class LoginvisitantePage {
     this.usuarioProvider.crearAndroidVisitante(formulario.value).subscribe(
       data=>{ 
           loading.dismiss();   
-          this.usuario=new Usuario("","","","","","","","","","","","","",null,null);          
+          this.usuario=new Usuario("","","","","","","","","","","","","","",null,null);          
           localStorage.setItem('usuario',JSON.stringify({ usuario:<Usuario>data["data"]}));   
               
           this.navCtrl.push(MenuPage,{visible:false});

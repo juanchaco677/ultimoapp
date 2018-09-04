@@ -7,6 +7,7 @@ import { EventoProvider } from '../../providers/evento/evento';
 import { Usuario} from '../../modelo/usuario';
 import { EventoPage } from '../evento/evento';
 import { CaeventoPage } from '../caevento/caevento';
+import { ValerianConstante } from '../../util/valerianconstante';
 @Component({
   selector: 'page-listareventos',
   templateUrl: 'listareventos.html'
@@ -17,9 +18,10 @@ export class ListareventosPage {
   listaImagen:Array<Imagen> = [];
   listaImagenEvento:Array<Imagen> = [];
   buscar:string;
+  url:string;
   constructor(public navCtrl: NavController,private eventoProvider :EventoProvider ) {
     this.usuarioAuth=<Usuario>JSON.parse(localStorage.getItem('usuario')).usuario;
-
+    this.url=ValerianConstante.URL;
   }
 
   getEventos(buscar:String,inicial:number){
@@ -49,7 +51,7 @@ export class ListareventosPage {
         },
       err=>{        
         console.log("ERROR");
-        console.log(err);
+        console.log(err["error"]);
       }
     );
   }

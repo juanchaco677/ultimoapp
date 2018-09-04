@@ -1,5 +1,6 @@
 
 export class Publicacion {  
+
     constructor(
       public id:string,
       public id_evento:string,
@@ -12,15 +13,10 @@ export class Publicacion {
       public created_at:Date,
       public updated_at:Date
     ){
-  
+      
+    
     }
-  concatenar(cadena:string){
-    return (cadena=="null" || cadena=="" || cadena==undefined)?"":cadena;
-  }
-  
-  getNombreCompleto(){
-  
-     return this.name+" "+this.concatenar(this.name2)+" "+this.concatenar(this.lastname)+" "+this.concatenar(this.lastname2)
-  }
+  nombreCompleto:string;
+
 }  
 

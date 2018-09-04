@@ -21,7 +21,7 @@
         </div>
       </ion-item>
       <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;" *ngFor="let imagen of listaImage" >
-          <ion-img style="width:100%;height:220px" src="http://181.61.152.40/{{imagen.foto}}"></ion-img>
+          <ion-img style="width:100%;height:220px" src="{{url}}{{imagen.foto}}"></ion-img>
       </div>
       <ion-item id="evento-list-item-container3">
         <div id="evento-markdown3" style="text-align:justify;" class="show-list-numbers-and-dots">
@@ -42,7 +42,7 @@
               <div id="evento-markdown4" style="text-align:right;" class="show-list-numbers-and-dots">
                 <p style="margin-top:0px;color:#3A7EF5;">
                   <strong >
-                      {{comentario.getNombreCompleto()}}&nbsp{{comentario.created_at}}
+                      {{comentario.nombreCompleto}}
                   </strong>
                 </p>
               </div>

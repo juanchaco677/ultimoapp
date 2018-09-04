@@ -5,7 +5,7 @@
     </button>  
     <ion-buttons end>
       <button ion-button solid>
-        Datos Personales
+        Datos Personales 
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -16,17 +16,17 @@
       <ion-label floating>
         Nombre Completo
       </ion-label>
-      <ion-input type="text" [(ngModel)]="usuarioAuth.name"  name="name"></ion-input>
+      <ion-input type="text" [(ngModel)]="usuarioAuth.nombreCompleto"   name="name"></ion-input>
     </ion-item>
     <ion-item id="perfil-input9">
       <ion-label floating>
-        Celular
+        Célular
       </ion-label>
       <ion-input type="tel" [(ngModel)]="usuarioAuth.telefonomovil"  name="telefonomovil"></ion-input>
     </ion-item>
     <ion-item id="perfil-input10">
       <ion-label floating>
-        Input
+        Correo
       </ion-label>
       <ion-input type="email" [(ngModel)]="usuarioAuth.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email"></ion-input>
     </ion-item>
@@ -34,11 +34,11 @@
       <ion-label>
         Sexo
       </ion-label>
-      <ion-select name="sexo">
-        <ion-option>
+      <ion-select [(ngModel)]="usuarioAuth.sex" name="sex">
+        <ion-option  value="F">
           Femenino
         </ion-option>
-        <ion-option>
+        <ion-option value="M">
           Masculino
         </ion-option>
       </ion-select>
@@ -48,6 +48,5 @@
          Guardar
     </button>
   </form>
-
 
 </ion-content>

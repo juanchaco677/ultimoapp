@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { Usuario} from '../../modelo/usuario';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
-
+import { ValerianConstante } from '../../util/valerianconstante';
 @Component({
   selector: 'page-perfil',
   templateUrl: 'perfil.html'
@@ -36,9 +36,17 @@ export class PerfilPage {
             formulario.value.apellido2 = "ANONIMO";
 
         }
-        this.usuarioProvider.getUsuario(this.usuarioAuth.token).subscribe(
+        formulario.value.id=this.usuarioAuth.id;
+        formulario.value.sex=this.usuarioAuth.sex;
+        console.log("antes de enviar");
+        console.log(formulario.value);
+        this.usuarioProvider.actualizarAndroid(formulario.value,this.usuarioAuth.token).subscribe(
             data => {
+                let token=this.usuarioAuth.token;
                 this.usuarioAuth=<Usuario>data["data"];
+                this.usuarioAuth.token=token;
+                this.usuarioAuth.nombreCompleto=ValerianConstante.getNombreCompleto(this.usuarioAuth);
+                localStorage.setItem('usuario',JSON.stringify({ usuario:this.usuarioAuth}));
                 loading.dismiss(); 
                 let alert = this.alertCtrl.create({
                     title: "Se actualizo correctamente la información.",
@@ -67,4 +75,5 @@ export class PerfilPage {
         }
         return this.recursivo(arrayNombre, i + 1);
     }
+
 }
