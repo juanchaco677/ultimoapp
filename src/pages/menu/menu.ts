@@ -9,7 +9,7 @@ import { ListareventosPage } from '../../pages/listareventos/listareventos';
 import { Usuario} from '../../modelo/usuario';
 import { PerfilPage } from '../../pages/perfil/perfil';
 
-
+import { ValerianConstante } from '../../util/valerianconstante';
 /**
  * Generated class for the MenuPage page.
  *
@@ -29,6 +29,7 @@ export class MenuPage implements OnInit {
   
     usuarioAuth:Usuario=<Usuario>JSON.parse(localStorage.getItem('usuario')).usuario; 
     visible:boolean=true;
+    url:string;
   ngOnInit() {
     console.log("ciclo devida");
 
@@ -37,6 +38,7 @@ export class MenuPage implements OnInit {
     console.log(this.visible);
   }
   constructor( public navParams: NavParams,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+    this.url=ValerianConstante.URL;
     this.visible=<boolean>this.navParams.get("visible");
     console.log("constructor");
     console.log("USUARIO LOGUEADO");

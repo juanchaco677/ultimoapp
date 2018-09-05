@@ -57,9 +57,10 @@ export class EventoPage {
               publicacion.lastname2,
               publicacion.created_at,
               publicacion.updated_at);
-
-            this.publicacion.nombreCompleto=ValerianConstante.getNombreCompletoPublicacion(publicacion);
-            this.listaPublicacion.push(this.publicacion);
+              let calculoDias=ValerianConstante.getDias(new Date(),new Date(this.publicacion.created_at));  
+              let diasHoras=calculoDias > 0?(calculoDias+" "+ValerianConstante.getHora(new Date(this.publicacion.created_at))) :(""+ValerianConstante.getHora(new Date(this.publicacion.created_at)));  
+              this.publicacion.nombreCompleto=ValerianConstante.getNombreCompletoPublicacion(publicacion)+" "+diasHoras;
+             this.listaPublicacion.push(this.publicacion);
 
             break;
           }                
@@ -89,7 +90,9 @@ export class EventoPage {
             publicacion.lastname2,
             publicacion.created_at,
             publicacion.updated_at);
-          this.publicacion.nombreCompleto=ValerianConstante.getNombreCompletoPublicacion(publicacion);      
+            let calculoDias=ValerianConstante.getDias(new Date(),new Date(this.publicacion.created_at));  
+            let diasHoras=calculoDias > 0?(calculoDias+" "+ValerianConstante.getHora(new Date(this.publicacion.created_at))) :(""+ValerianConstante.getHora(new Date(this.publicacion.created_at)));  
+            this.publicacion.nombreCompleto=ValerianConstante.getNombreCompletoPublicacion(publicacion)+" "+diasHoras;
           this.listaPublicacion.push(this.publicacion);
           },
         err=>{        
@@ -98,4 +101,7 @@ export class EventoPage {
         }
       );
   }
+
+
+ 
 }

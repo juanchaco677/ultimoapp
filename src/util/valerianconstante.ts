@@ -19,4 +19,24 @@ export class ValerianConstante {
   public static getNombreCompletoPublicacion(publicacion:Publicacion){
     return  publicacion.name+" "+(ValerianConstante.esVacio(publicacion.name2)?"":publicacion.name2)+" "+(ValerianConstante.esVacio(publicacion.lastname)?"":publicacion.lastname)+" "+(ValerianConstante.esVacio(publicacion.lastname2)?"":publicacion.lastname2);
    }
+
+  public static getFecha(todayTime:Date) {
+    var todayTime = new Date();
+    var month = todayTime .getMonth() + 1;
+    var day = todayTime .getDate();
+    var year =todayTime .getFullYear();
+    return month + "/" + day + "/" + year;
+  }
+  public static getDias(fechaActual:Date,fechaAnterior:Date){
+    var dif = fechaActual.getTime() - fechaAnterior.getTime();
+    var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+    return dias;
+  }
+  public static getHora(todayTime:Date) {
+    var todayTime = new Date();
+    var horas = todayTime .getHours();
+    var minutos = todayTime .getMinutes();
+    var segundos =todayTime .getSeconds();
+    return horas + ":" + minutos + ":" + segundos;
+  }
 }
