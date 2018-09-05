@@ -58,7 +58,7 @@ export class EventoPage {
               publicacion.created_at,
               publicacion.updated_at);
               let calculoDias=ValerianConstante.getDias(new Date(),new Date(this.publicacion.created_at));  
-              let diasHoras=calculoDias > 0?(calculoDias+" "+ValerianConstante.getHora(new Date(this.publicacion.created_at))) :(""+ValerianConstante.getHora(new Date(this.publicacion.created_at)));  
+              let diasHoras=calculoDias > 0?("Hace "+calculoDias+" "+ValerianConstante.getHora(new Date(this.publicacion.created_at))) :(""+ValerianConstante.getHora(new Date(this.publicacion.created_at)));  
               this.publicacion.nombreCompleto=ValerianConstante.getNombreCompletoPublicacion(publicacion)+" "+diasHoras;
              this.listaPublicacion.push(this.publicacion);
 
@@ -91,7 +91,7 @@ export class EventoPage {
             publicacion.created_at,
             publicacion.updated_at);
             let calculoDias=ValerianConstante.getDias(new Date(),new Date(this.publicacion.created_at));  
-            let diasHoras=calculoDias > 0?(calculoDias+" "+ValerianConstante.getHora(new Date(this.publicacion.created_at))) :(""+ValerianConstante.getHora(new Date(this.publicacion.created_at)));  
+            let diasHoras=calculoDias > 0?("Hace "+calculoDias+" "+ValerianConstante.getHora(new Date(this.publicacion.created_at))) :(""+ValerianConstante.getHora(new Date(this.publicacion.created_at)));  
             this.publicacion.nombreCompleto=ValerianConstante.getNombreCompletoPublicacion(publicacion)+" "+diasHoras;
           this.listaPublicacion.push(this.publicacion);
           },
