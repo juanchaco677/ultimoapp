@@ -59,7 +59,8 @@ export class EventoPage {
               publicacion.updated_at);
               let calculoDias=ValerianConstante.getDias(new Date(),new Date(this.publicacion.created_at));  
               let diasHoras=calculoDias > 0?("Hace "+calculoDias+" "+ValerianConstante.getHora(new Date(this.publicacion.created_at))) :(""+ValerianConstante.getHora(new Date(this.publicacion.created_at)));  
-              this.publicacion.nombreCompleto=ValerianConstante.getNombreCompletoPublicacion(publicacion)+" "+diasHoras;
+              this.publicacion.diaHora =diasHoras;   
+              this.publicacion.nombreCompleto=ValerianConstante.getNombreCompletoPublicacion(this.publicacion);
              this.listaPublicacion.push(this.publicacion);
 
             break;
@@ -92,7 +93,8 @@ export class EventoPage {
             publicacion.updated_at);
             let calculoDias=ValerianConstante.getDias(new Date(),new Date(this.publicacion.created_at));  
             let diasHoras=calculoDias > 0?("Hace "+calculoDias+" "+ValerianConstante.getHora(new Date(this.publicacion.created_at))) :(""+ValerianConstante.getHora(new Date(this.publicacion.created_at)));  
-            this.publicacion.nombreCompleto=ValerianConstante.getNombreCompletoPublicacion(publicacion)+" "+diasHoras;
+            this.publicacion.diaHora = diasHoras;  
+            this.publicacion.nombreCompleto = ValerianConstante.getNombreCompletoPublicacion(this.publicacion);
           this.listaPublicacion.push(this.publicacion);
           },
         err=>{        
@@ -101,7 +103,4 @@ export class EventoPage {
         }
       );
   }
-
-
- 
 }
