@@ -16,6 +16,7 @@ export class Publicacion {
       
     
     }
+  diaHora:string;
   nombreCompleto:string;
 
 }  
