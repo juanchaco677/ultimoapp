@@ -22,12 +22,22 @@
       </ion-label>
       <ion-textarea  required [(ngModel)]="evento.descripcion" name="descripcion" ></ion-textarea>
     </ion-item>
-    <div class="row">
-        <div class="col-md-12 align-self-center" *ngFor="let imagen of imagenes; let i = index" >
-          <img class="img-fluid d-block"[src]="imagen"> 
-          <button ion-button color="danger" (click)="eliminarImagen(i);">Eliminar</button>
-       
+    <div class="row" scrollY="true">
+ 
+        <div class="col-md-12 align-self-center" *ngFor="let imagentabla of imagenesTabla; let j = index" >
+          <img style="width:100%;height:220px"  src="{{url}}{{imagentabla.foto}}" />        
+          <button ion-button color="danger" (click)="eliminarImagenTabla(j);" block>
+              Eliminar
+          </button>
         </div>
+
+        <div class="col-md-12 align-self-center" *ngFor="let imagen of imagenes; let i = index" >
+          <img class="img-fluid d-block" [src]="imagen"> 
+          <button ion-button color="danger" (click)="eliminarImagen(i);" block>
+              Eliminar
+          </button>
+        </div>
+  
     </div>
     <div class="spacer" style="width:100px;height:2px;" id="caevento-spacer4"></div>
  

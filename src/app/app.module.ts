@@ -21,6 +21,7 @@ import { Camera } from '@ionic-native/camera';
 import { FacebookPage } from '../pages/facebook/facebook';
 import { LoginvisitantePage } from '../pages/loginvisitante/loginvisitante';
 import { PerfilPage } from '../pages/perfil/perfil';
+import { ImagenesProvider } from '../providers/imagenes/imagenes';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { PerfilPage } from '../pages/perfil/perfil';
     Geolocation,
     EventoProvider,
     PublicacionProvider,
+    ImagenesProvider,
     
     
   ]

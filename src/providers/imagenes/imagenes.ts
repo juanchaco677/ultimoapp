@@ -3,15 +3,17 @@ import { Http,Response,RequestOptions,Headers } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Rx';
 import { ValerianConstante } from '../../util/valerianconstante';
+import { Publicacion} from '../../modelo/publicacion';
 
 /*
-  Generated class for the EventoProvider provider.
+  Generated class for the ImagenesProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class EventoProvider {
+export class ImagenesProvider {
+
   ruta:string=ValerianConstante.URL+"api/usuario/";
   headers:Headers = new Headers;
   /**
@@ -22,52 +24,32 @@ export class EventoProvider {
 
   }
 
-  public getEventos(buscar:String,token:String,inicial:number):Observable <any[]>{
+  getImagenesFoto(id_evento:string,token:String):Observable <any[]>{
     let headers = new Headers();
-    headers.append('Authorization', 'Bearer ' + token); 
+    headers.append('Authorization', 'Bearer ' + token);
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
-    let parameter="buscar="+buscar;
-    parameter+="&";
-    parameter+="inicial="+inicial;
-    let options = new RequestOptions({ headers: headers });
-    return this.http.get(this.ruta+"getEventos/?"+parameter,options) 
-    .map((res : Response) => res.json());
+    let parameter="id_evento="+id_evento;
+    let options = new RequestOptions({ headers: headers});
+    return this.http.get(this.ruta+"getImagenesFoto/?"+parameter,options)
+    .map((res : Response) => res.json())
   }
-
-       /**
+    /**
    * metood para crear un usuario
    * la data es json o informaicon ingresada en el formulario
    * @param data 
    */
-  public crear(data:any,token:string):Observable<any>{
+  public crearEliminar(data:any,token:string):Observable<Publicacion>{
     let headers = new Headers();
     headers.append('Authorization', 'Bearer ' + token); 
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
     let options = new RequestOptions({ headers: headers});
 
-    return this.http.post(this.ruta+"storeEvento",data,options)
-    .map((res : Response) => res.json())
-
-  }
-         /**
-   * metood para crear un usuario
-   * la data es json o informaicon ingresada en el formulario
-   * @param data 
-   */
-  public deleteEvento(data:any,token:string):Observable<any>{
-    let headers = new Headers();
-    headers.append('Authorization', 'Bearer ' + token); 
-    headers.append('Content-Type', 'application/json');
-    headers.append('Accept', 'application/json');
-    let options = new RequestOptions({ headers: headers});
-
-    return this.http.post(this.ruta+"deleteEvento",data,options)
+    return this.http.post(this.ruta+"storeDeleteImagen",data,options)
     .map((res : Response) => res.json())
 
   }
 
-  
 
 }

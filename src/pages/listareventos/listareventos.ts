@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,AlertController,LoadingController } from 'ionic-angular';
 
 import { Evento} from '../../modelo/evento';
 import { Imagen} from '../../modelo/imagen';
@@ -8,6 +8,8 @@ import { Usuario} from '../../modelo/usuario';
 import { EventoPage } from '../evento/evento';
 import { CaeventoPage } from '../caevento/caevento';
 import { ValerianConstante } from '../../util/valerianconstante';
+import { MenuPage } from '../menu/menu';
+
 @Component({
   selector: 'page-listareventos',
   templateUrl: 'listareventos.html'
@@ -19,7 +21,7 @@ export class ListareventosPage {
   listaImagenEvento:Array<Imagen> = [];
   buscar:string;
   url:string;
-  constructor(public navCtrl: NavController,private eventoProvider :EventoProvider ) {
+  constructor(private loadingCtrl:LoadingController,private alertCtrl: AlertController,public redireccionar: NavController,private eventoProvider :EventoProvider ) {
     this.usuarioAuth=<Usuario>JSON.parse(localStorage.getItem('usuario')).usuario;
     this.url=ValerianConstante.URL;
   }
@@ -78,7 +80,69 @@ export class ListareventosPage {
   }
 
   ver(evento:Evento){
-    this.navCtrl.push(EventoPage,{evento:evento});
+    this.redireccionar.push(EventoPage,{evento:evento});
+  }
+  editar(evento:Evento){
+    if(this.usuarioAuth.id==evento.id_creador){
+      this.redireccionar.push(CaeventoPage,{evento:evento});
+    }else{
+      let alert = this.alertCtrl.create({
+        title: 'Privilegios:',
+        subTitle:"No tiene los suficientes privilegios para actualizar el Evento.",
+        buttons: ['OK']
+      });    
+      alert.present();     
+    }
+  }
+  eliminar(evento:Evento){
+    if(this.usuarioAuth.id==evento.id_creador){
+      let alert = this.alertCtrl.create({
+        title: 'Acción en proceso.',
+        message: 'Esta Seguro De Eliminar El Evento.?',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Aceptar',
+            handler: () => {
+              let loading = this.loadingCtrl.create({
+                spinner: 'bubbles',
+                content: 'Cargando...'
+              });  
+              loading.present();
+              this.eventoProvider.deleteEvento({id:evento.id},this.usuarioAuth.token).subscribe(
+                data=>{             
+                  loading.dismiss();      
+                this.redireccionar.push(MenuPage);       
+                },
+                err=>{
+                  loading.dismiss();
+                  let alert = this.alertCtrl.create({
+                    title: 'Error al eliminar el evento.',
+                    subTitle: JSON.parse(err["_body"]).error,
+                    buttons: ['OK']
+                  });    
+                  alert.present();       
+          
+              });
+            }
+          }
+        ]
+      });
+      alert.present();
+    }else{
+      let alert = this.alertCtrl.create({
+        title: 'Privilegios:',
+        subTitle:"No tiene los suficientes privilegios para actualizar el Evento.",
+        buttons: ['OK']
+      });    
+      alert.present();     
+    }
   }
 
   /**
@@ -102,7 +166,7 @@ export class ListareventosPage {
 
   irCAenvento(params){
     if (!params) params = {};
-    this.navCtrl.push(CaeventoPage);
+    this.redireccionar.push(CaeventoPage);
   }
   
 }
