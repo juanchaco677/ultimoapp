@@ -1,7 +1,9 @@
 import { Usuario} from '../modelo/usuario';
 import { Publicacion} from '../modelo/publicacion';
 export class ValerianConstante {
-  public static URL:string="http://localhost:8000/";
+  
+  // http://localhost:8000/
+  public static URL:string="http://181.61.152.40/";
 
   public static concatenar(cadena:string){
     return ValerianConstante.esVacio(cadena)?"":cadena;
