@@ -22,6 +22,8 @@ import { FacebookPage } from '../pages/facebook/facebook';
 import { LoginvisitantePage } from '../pages/loginvisitante/loginvisitante';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { ImagenesProvider } from '../providers/imagenes/imagenes';
+import { SmsPage } from '../pages/sms/sms';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { ImagenesProvider } from '../providers/imagenes/imagenes';
     LoginvisitantePage,
     MenuPage,
     PerfilPage,
+    SmsPage,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +61,7 @@ import { ImagenesProvider } from '../providers/imagenes/imagenes';
     FacebookPage,
     MenuPage,
     PerfilPage,
+    SmsPage,
   ],
   providers: [
     StatusBar,

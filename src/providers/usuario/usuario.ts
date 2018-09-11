@@ -129,5 +129,35 @@ export class UsuarioProvider {
 
   }
 
+  public getUsuarioSms(buscar:String,token:String,id_candidato:any,id:any):Observable <Usuario[]>{
+
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + token);
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    let parameter="id="+id;
+        parameter+="&";
+        parameter+="id_candidato="+id_candidato;
+        parameter+="&";
+        parameter+="buscar="+buscar;
+
+    let options = new RequestOptions({ headers: headers});
+    return this.http.get(this.ruta+"getUsuarioSms/?"+parameter,options)
+    .map((res : Response) => res.json())
+
+  }
+
+  public envioSms(data:any,token:string):Observable<any>{
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + token); 
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    let options = new RequestOptions({ headers: headers});
+
+    return this.http.post(this.ruta+"envioSms",data,options)
+    .map((res : Response) => res.json())
+
+  }
+
 
 }

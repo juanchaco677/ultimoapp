@@ -1,0 +1,59 @@
+<ion-content padding id="page12">
+    <div id="sms-container6" >
+      <ion-searchbar placeholder="" *ngIf="visible"  (ionInput)="buscarUsuarios($event)" name="buscar" id="sms-search5"></ion-searchbar>
+      <div class="spacer" style="width:300px;height:4px;" id="sms-spacer5"></div>
+      <ion-item id="sms-toggle1">
+        <ion-label>
+          Todos
+        </ion-label>
+        <ion-toggle color="positive" (ionChange)="cambiarEstado($event)" checked="false"></ion-toggle>
+      </ion-item>
+      <ion-item id="sms-textarea2">
+        <ion-label>
+          Mensaje
+        </ion-label>
+        <ion-textarea [(ngModel)]="mensaje" name="mensaje" placeholder=""></ion-textarea>
+      </ion-item>
+    </div>
+    <ion-list id="listareventos-list9" *ngIf="visible">
+        <ion-item-sliding *ngFor="let usuario of listaUsuario">
+          <ion-item color="positive" id="listareventos-list-item2">
+            <ion-avatar item-left>             
+              <img />
+            </ion-avatar>
+            <h2>
+              {{usuario.nombreCompleto}}
+            </h2>
+          </ion-item>
+          <ion-item-options side="left">            
+              <button ion-button color="positive" (click)="agregar(usuario)">
+                  Agregar
+              </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+   
+      <h5 id="sms-heading1" style="color:#000000;font-weight:600;" *ngIf="visible">
+        Lista agregados:
+      </h5>
+      <ion-list id="listareventos-list8" *ngIf="visible">
+          <ion-item-sliding *ngFor="let usuarioagregado of listaUsuarioDefinitiva ; let j = index">
+            <ion-item color="positive" id="listareventos-list-item2">
+              <ion-avatar item-left>             
+                <img />
+              </ion-avatar>
+              <h2>
+                {{usuarioagregado.nombreCompleto}}
+              </h2>
+            </ion-item>
+            <ion-item-options side="left">            
+              <button style="margin-left: 5px;" ion-button color="danger" (click)="eliminarImagen(j)">
+                Eliminar
+              </button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>    
+        <ion-fab right bottom (click)="enviar()">
+            <button ion-fab mini><ion-icon name="send"></ion-icon></button>      
+          </ion-fab>
+  </ion-content>

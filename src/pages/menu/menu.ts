@@ -10,6 +10,7 @@ import { Usuario} from '../../modelo/usuario';
 import { PerfilPage } from '../../pages/perfil/perfil';
 
 import { ValerianConstante } from '../../util/valerianconstante';
+import { SmsPage } from '../sms/sms';
 /**
  * Generated class for the MenuPage page.
  *
@@ -31,19 +32,12 @@ export class MenuPage implements OnInit {
     visible:boolean=true;
     url:string;
   ngOnInit() {
-    console.log("ciclo devida");
 
-    console.log("USUARIO LOGUEADO");
-    console.log(this.usuarioAuth.type);
-    console.log(this.visible);
   }
   constructor( public navParams: NavParams,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     this.url=ValerianConstante.URL;
     this.visible=<boolean>this.navParams.get("visible");
-    console.log("constructor");
-    console.log("USUARIO LOGUEADO");
-    console.log(this.usuarioAuth.type);
-    console.log(this.visible);
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -78,5 +72,9 @@ export class MenuPage implements OnInit {
   loginTwitter(){
     location.replace("https://twitter.com/nintendoboy?lang=es");
   
+  }
+  goToUsuarioSms(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(SmsPage);
   }
 }
