@@ -18,11 +18,12 @@ import { ListareventosPage } from '../pages/listareventos/listareventos';
 import { EventoProvider } from '../providers/evento/evento';
 import { PublicacionProvider } from '../providers/publicacion/publicacion';
 import { Camera } from '@ionic-native/camera';
-import { FacebookPage } from '../pages/facebook/facebook';
+
 import { LoginvisitantePage } from '../pages/loginvisitante/loginvisitante';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { ImagenesProvider } from '../providers/imagenes/imagenes';
 import { SmsPage } from '../pages/sms/sms';
+import { EventousuariosPage } from '../pages/eventousuarios/eventousuarios';
 
 
 @NgModule({
@@ -35,11 +36,11 @@ import { SmsPage } from '../pages/sms/sms';
     ListarenoticiasPage,
     ListareventosPage,
     CaeventoPage,
-    FacebookPage,
     LoginvisitantePage,
     MenuPage,
     PerfilPage,
     SmsPage,
+    EventousuariosPage,
   ],
   imports: [
     BrowserModule,
@@ -57,11 +58,11 @@ import { SmsPage } from '../pages/sms/sms';
     ListarenoticiasPage,
     ListareventosPage,
     CaeventoPage,
-    LoginvisitantePage,
-    FacebookPage,
+    LoginvisitantePage,  
     MenuPage,
     PerfilPage,
     SmsPage,
+    EventousuariosPage,
   ],
   providers: [
     StatusBar,

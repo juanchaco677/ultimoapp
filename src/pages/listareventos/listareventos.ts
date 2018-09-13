@@ -7,6 +7,8 @@ import { EventoProvider } from '../../providers/evento/evento';
 import { Usuario} from '../../modelo/usuario';
 import { EventoPage } from '../evento/evento';
 import { CaeventoPage } from '../caevento/caevento';
+import { EventousuariosPage } from '../eventousuarios/eventousuarios';
+
 import { ValerianConstante } from '../../util/valerianconstante';
 import { MenuPage } from '../menu/menu';
 
@@ -94,6 +96,11 @@ export class ListareventosPage {
       alert.present();     
     }
   }
+
+  agregarUsuario(evento:Evento){
+    this.redireccionar.push(EventousuariosPage,{evento:evento});
+  }
+
   eliminar(evento:Evento){
     if(this.usuarioAuth.id==evento.id_creador){
       let alert = this.alertCtrl.create({
