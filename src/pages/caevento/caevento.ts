@@ -88,7 +88,8 @@ export class CaeventoPage {
         this.eventoProvider.crear(formulario.value,this.usuarioAuth.token).subscribe(
           data=>{        
             loading.dismiss();  
-            this.evento=new Evento("","","","","","","",null,null);     
+            this.evento=new Evento("","","","","","","",null,null);    
+            this.imagenes=[];
             let alert = this.alertCtrl.create({
               title: "Se registro correctamente el evento.",
               subTitle: data["data"],
