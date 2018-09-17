@@ -13,7 +13,7 @@ import { MenuPage } from '../menu/menu';
   templateUrl: 'caevento.html'
 })
 export class CaeventoPage {
-  evento:Evento=new Evento("","","","","","null","null",null,null);
+  evento:Evento;
   usuarioAuth:Usuario;
   imagenes:Array<string>=[];
   imagenesTabla:Array<Imagen> = [];
@@ -22,6 +22,9 @@ export class CaeventoPage {
   constructor(private imagenesProvider:ImagenesProvider,private alertCtrl: AlertController,public parametros: NavParams,private loadingCtrl:LoadingController,public redireccionar: NavController,private camera: Camera,private eventoProvider:EventoProvider) {
     this.usuarioAuth=<Usuario>JSON.parse(localStorage.getItem('usuario')).usuario;
     this.evento=<Evento>this.parametros.get("evento");
+    if(this.evento ==undefined){
+      this.evento=new Evento("","","","","","","",null,null);
+    }
     this.url=ValerianConstante.URL;
     this.getImagenes();
   }
