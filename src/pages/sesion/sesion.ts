@@ -13,9 +13,14 @@ import { ValerianConstante } from '../../util/valerianconstante';
 })
 export class SesionPage implements OnInit {
   usuario=new Usuario("","","","","","","","","","","","","","",null,null);
+  usuarioAuth:Usuario;
   errores:Array<string>;
   constructor(private alertCtrl: AlertController,private loadingCtrl:LoadingController,public redireccionar: NavController,private usuarioProvider:UsuarioProvider) {
-
+   this.usuarioAuth=<Usuario>JSON.parse(localStorage.getItem('usuario')).usuario;
+   if(this.usuarioAuth != undefined || this.usuarioAuth != null ){
+       this.redireccionar.push(MenuPage,{visible:true});    
+   }
+      
   }
   ngOnInit() { 
 
