@@ -10,7 +10,10 @@
 </ion-header>
 <ion-content padding id="page4">
 <ion-card>
-    <img src="{{url}}{{imagen.foto}}" *ngFor="let imagen of listaImage"> />
+   <div id="evento-container34" *ngFor="let imagen of listaImage">  
+    <img src="{{url}}{{imagen.foto}}" />
+    <div class="spacer" style="width:300px;height:4px;" id="sesion-spacer2"></div>
+   </div>
     <ion-card-content>
         <ion-card-title>
              {{evento.created_at}} {{evento.titulo}}
