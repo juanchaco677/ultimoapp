@@ -4,7 +4,7 @@ export class ValerianConstante {
   
   // http://localhost:8000/
   //http://181.61.152.40/
-  public static URL:string="http://181.61.152.40/";
+  public static URL:string="http://190.8.248.12/";
 
   public static concatenar(cadena:string){
     return ValerianConstante.esVacio(cadena)?"":cadena;
