@@ -19,11 +19,13 @@ export class CaeventoPage {
   imagenesTabla:Array<Imagen> = [];
   imagenesTablaEliminar:Array<Imagen> = [];
   url:string;
+  crearactualizar:boolean=false;
   constructor(private imagenesProvider:ImagenesProvider,private alertCtrl: AlertController,public parametros: NavParams,private loadingCtrl:LoadingController,public redireccionar: NavController,private camera: Camera,private eventoProvider:EventoProvider) {
     this.usuarioAuth=<Usuario>JSON.parse(localStorage.getItem('usuario')).usuario;
     this.evento=<Evento>this.parametros.get("evento");
-    if(this.evento ==undefined){
+    if(this.evento==undefined){
       this.evento=new Evento("","","","","","","",null,null);
+      this.crearactualizar=true;
     }
     this.url=ValerianConstante.URL;
     this.getImagenes();
@@ -77,7 +79,7 @@ export class CaeventoPage {
     formulario.value.type="E";
     formulario.value.id_creador=this.usuarioAuth.id;
     
-    if(this.evento==null || this.evento==undefined){
+    if(this.crearactualizar){
       //crear el evento
       if(this.imagenes.length > 0){
         formulario.value.imagenes=this.imagenes;
