@@ -57,7 +57,7 @@ export class MenuPage implements OnInit {
   }
   goToExit(params){
     if (!params) params = {};
-
+    localStorage.removeItem("usuario");
     this.navCtrl.setRoot(SesionPage);
   }
   goToListareventos(params){
