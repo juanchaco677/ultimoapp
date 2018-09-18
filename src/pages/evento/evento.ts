@@ -94,7 +94,7 @@ export class EventoPage {
             let calculoDias=ValerianConstante.getDias(new Date(),new Date(this.publicacion.created_at));  
             let diasHoras=calculoDias > 0?("Hace "+calculoDias+" "+ValerianConstante.getHora(new Date(this.publicacion.created_at))) :(""+ValerianConstante.getHora(new Date(this.publicacion.created_at)));  
             this.publicacion.diaHora = diasHoras;  
-            this.publicacion.nombreCompleto = ValerianConstante.getNombreCompletoPublicacion(this.publicacion);
+            this.publicacion.nombreCompleto = ValerianConstante.getNombreCompleto(this.usuarioAuth);
           this.listaPublicacion.push(this.publicacion);
           },
         err=>{        
