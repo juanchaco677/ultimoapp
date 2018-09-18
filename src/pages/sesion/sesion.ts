@@ -16,8 +16,7 @@ export class SesionPage implements OnInit {
   usuarioAuth:Usuario;
   errores:Array<string>;
   constructor(private alertCtrl: AlertController,private loadingCtrl:LoadingController,public redireccionar: NavController,private usuarioProvider:UsuarioProvider) {
-   this.usuarioAuth=<Usuario>JSON.parse(localStorage.getItem('usuario')).usuario;
-   if(this.usuarioAuth != undefined || this.usuarioAuth != null ){
+   if(localStorage.getItem('usuario') != undefined || localStorage.getItem('usuario') != null ){
        this.redireccionar.push(MenuPage,{visible:true});    
    }
       
