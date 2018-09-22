@@ -42,34 +42,22 @@ export class EventoPage {
   }
   addEvento(publicacion:Publicacion){
 
-    if(this.listaPublicacion.length>0){
-      for (const key in this.listaPublicacion) {
-          let publicacionAnalizado=<Publicacion>this.listaPublicacion[key];
-          if(publicacionAnalizado.id!=publicacion.id){
-            this.publicacion=new Publicacion(
-              publicacion.id,
-              publicacion.id_evento,
-              publicacion.id_comenta,
-              publicacion.descripcion,
-              publicacion.name,
-              publicacion.name2,
-              publicacion.lastname,
-              publicacion.lastname2,
-              publicacion.created_at,
-              publicacion.updated_at);
-              let calculoDias=ValerianConstante.getDias(new Date(),new Date(this.publicacion.created_at));  
-              let diasHoras=calculoDias > 0?("Hace "+calculoDias+" "+ValerianConstante.getHora(new Date(this.publicacion.created_at))) :(""+ValerianConstante.getHora(new Date(this.publicacion.created_at)));  
-              this.publicacion.diaHora =diasHoras;   
-              this.publicacion.nombreCompleto=ValerianConstante.getNombreCompletoPublicacion(this.publicacion);
-             this.listaPublicacion.push(this.publicacion);
-
-            break;
-          }                
-      }
-    }else{
- 
-      this.listaPublicacion.push(publicacion);
-    }
+    this.publicacion=new Publicacion(
+    publicacion.id,
+    publicacion.id_evento,
+    publicacion.id_comenta,
+    publicacion.descripcion,
+    publicacion.name,
+    publicacion.name2,
+    publicacion.lastname,
+    publicacion.lastname2,
+    publicacion.created_at,
+    publicacion.updated_at);
+    let calculoDias=ValerianConstante.getDias(new Date(),new Date(this.publicacion.created_at));  
+    let diasHoras=calculoDias > 0?("Hace "+calculoDias+" "+ValerianConstante.getHora(new Date(this.publicacion.created_at))) :(""+ValerianConstante.getHora(new Date(this.publicacion.created_at)));  
+    this.publicacion.diaHora =diasHoras;   
+    this.publicacion.nombreCompleto=ValerianConstante.getNombreCompletoPublicacion(this.publicacion);
+    this.listaPublicacion.push(this.publicacion);
     
   }
  
