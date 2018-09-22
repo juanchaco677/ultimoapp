@@ -2,7 +2,7 @@
 
   <form id="sesion-form1" class="form-horizontal" (ngSubmit)="iniciarSesion(sesion)" #sesion="ngForm" novalidate>
   
-  <div class="spacer" style="width:300px;height:116px;" id="sesion-spacer1"></div>
+  <div class="spacer" style="width:300px;height:180px;" id="sesion-spacer1"></div>
   <div *ngFor="let error of errores | async" class="alert alert-danger">
       {{ error }}
     </div>
