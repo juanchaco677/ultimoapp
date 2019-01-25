@@ -1,3 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-left>
+        <ion-icon name="chatboxes"></ion-icon>
+        Sms        
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 <ion-content padding id="page12">
     <div id="sms-container6" >
       <ion-searchbar placeholder="" *ngIf="visible"  (ionInput)="buscarUsuarios($event)" name="buscar" id="sms-search5"></ion-searchbar>
